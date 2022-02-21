@@ -7,7 +7,7 @@ from typing import List
 
 from view.mainwindow import Mainwindow
 from view.views import View
-from view.table import Table
+from view.table import Table1
 from model.model import Model
 from controller.controllers import Controller
 from controller.tablecontroller import TableController
@@ -41,7 +41,7 @@ class Application(tk.Tk):
         
     def new_tab(self, sheet):
 
-        table = Table(self.master)
+        table = Table1(self.master)
         table_controller = TableController(table, self.model)
         table_controller.bind(sheet)
         table_controller.set_controller(self.mainwindow_controller)

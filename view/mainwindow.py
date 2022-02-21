@@ -1,7 +1,7 @@
 from view.views import View
 import tkinter as tk
 from tkinter import ttk
-from view.table import Table
+
 
 
 class Mainwindow(View):
@@ -20,11 +20,11 @@ class Mainwindow(View):
         #self.window.geometry("1024x800")    
     
         # tworzenia ramki głównej w oknie
-        self.main_frame = ttk.Frame(self.window, width=1100, height=850, borderwidth=5, relief='flat')
+        self.main_frame = ttk.Frame(self.window, width=1400, height=850, borderwidth=5, relief='flat')
         self.main_frame.columnconfigure(0, weight=0)
         self.main_frame.rowconfigure(0, weight=0)
         self.main_frame.grid(row=0, column=0)  
-        self.notebook = ttk.Notebook(self.main_frame, width=1100, height=850)
+        self.notebook = ttk.Notebook(self.main_frame, width=1400, height=850)
         self.notebook.grid(row=0, column=0) 
      
         

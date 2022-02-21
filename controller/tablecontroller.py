@@ -1,7 +1,6 @@
 from controller.controllers import Controller
-from view.table import Table
+from view.table import Table1
 from model.model import Model
-import numpy as np
 
 class TableController(Controller):
     def __init__(self, table, model) -> None:
