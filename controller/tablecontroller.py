@@ -48,6 +48,10 @@ class TableController(Controller):
         
    
     def update(self):
+    
+        self.mainwindow_controller.bind() #wykrycie która zakładka jest aktywna
+        self.select_sheet = self.mainwindow_controller.select_tab # nazwa aktywnej zakładki
+        print("select sheet",self.select_sheet) 
         self.get_dataframe(self.select_sheet)
         self.table.create_view(self.dataframe)
         self.table.search_entry.delete(0,'end')

@@ -13,9 +13,14 @@ from controller.controllers import Controller
 from controller.tablecontroller import TableController
 from controller.mainwindowcontrollers import MainwindowController
 
+import os
+from dotenv import load_dotenv, find_dotenv
 
-link = link = "Q:\Planowanie Produkcji\!POTWIERDZANIE TERMINOW\Potwierdzanie terminow.xlsx"
-sheets = ['EXTA', 'SUPLA E-FREE E-LIFE', 'SUNDI', 'LEDIX']
+load_dotenv(find_dotenv())
+link: list
+link = os.environ.get("link")
+sheets = os.environ.get("sheets").split(",")
+print(link, sheets)
 
 class Application(tk.Tk):
     def __init__(self):
