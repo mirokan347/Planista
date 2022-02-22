@@ -6,17 +6,12 @@ from pandastable import Table, TableModel
 
 class Table1(View):
     def __init__(self, parent):
-        tk.Frame.__init__(self, parent)
+    
+        ttk.Frame.__init__(self, parent)
         self.search_entry_var = tk.StringVar()
-        
-        #self.rowconfigure(0, weight=1)
-        #self.columnconfigure(0, weight=1)
-        #self.grid(row=0, column=0, sticky=tk.N + tk.S + tk.E + tk.W)
-        
         self.notebookframe = ttk.Frame(self, width=1400, height=850, borderwidth=5, relief='flat')
         self.notebookframe.grid(row=0,column=0)
-        
-        
+                
         # tworzenia ramki górnej w ramce głównej
         self.topframe = ttk.Frame(self.notebookframe, width=1400, height=100, borderwidth=5, relief='flat')
         self.topframe.grid(row=0,column=0)
@@ -29,25 +24,26 @@ class Table1(View):
         # tworzenia ramki środkowej w ramce głównej        
         self.middleframe = ttk.Frame(self.notebookframe, width=1400, height=650, borderwidth=5, relief='flat')
         self.middleframe.grid(row=1,column=0)        
-
         
         # tworzenia dolnej górnej w ramce głównej        
         self.bottomframe = ttk.Frame(self.notebookframe, width=1400, height=100, borderwidth=5, relief='flat')
         self.bottomframe.grid(row=2,column=0)   
 
         self.create_button() 
-        
-        
+               
     def create_view(self, data: DataFrame):
 
-        table = pt = Table(self.middleframe, dataframe=data, showtoolbar=False, showstatusbar=False, editable=False, enable_menus=False, width=1300, height=700)
-        pt.show()
+        table = Table(self.middleframe, dataframe=data, showtoolbar=False, showstatusbar=False, editable=False, enable_menus=False, width=1300, height=700)
+        table.show() # wyświetlenie tabeli
         table.columncolors['ARTYKUŁ'] = '#dcf1fc' #color a specific column
         table.columncolors['NOWY TERMIN'] = '#ffe4e1'
         table.columncolors['TERMIN WYPRODUKOWANIA'] = '#ffffe0'
+        table.maxcellwidth = 1200
         table.redraw()
-
-        """
+        self.search_entry.focus_force()
+        
+        """ UTOWRZENIE TABELI BEZ UŻYCIA BIBLIOTEKI PANDASTABLE
+        
         print(self.search_entry_var)
         canvas=tk.Canvas(self.middleframe,bg='#FFFFFF', width=1000, height=750)
         canvas.configure(scrollregion=canvas.bbox("all"))
@@ -66,17 +62,13 @@ class Table1(View):
         canvas.create_window(0,0,anchor='nw',window=frame)
         
         #frame = tk.Frame(self.text, height=20, width=95)
-        
-        
-        
+                
         #frame.rowconfigure(0, weight=1)
         #frame.columnconfigure(0, weight=1)
-
                 
         total_rows = len(data.index)
         total_columns = len(data.columns)
-
-        
+       
         for idx, col in enumerate(list(data.columns)):
             label = ttk.Label(frame,width=20, text = str(col))
             label.grid(row=0, column=idx, sticky=tk.N + tk.S + tk.E + tk.W)

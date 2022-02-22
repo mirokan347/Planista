@@ -10,5 +10,5 @@ class MainwindowController(Controller):
         self.select_tab = None
         
     def bind(self):
-        self.select_tab = self.mainwindow.notebook.tab(self.mainwindow.notebook.select(), 'text')    
+        self.select_tab = self.mainwindow.notebook.tab(self.mainwindow.notebook.select(), 'text') # przypisanie do zmiennej aktywnej zakładki
         
