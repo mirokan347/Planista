@@ -1,5 +1,5 @@
 import tkinter as tk
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 
 class View(tk.Frame):
     @abstractmethod

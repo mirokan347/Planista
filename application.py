@@ -1,15 +1,7 @@
 import tkinter as tk
-import tkinter.messagebox as tkmsg
-from abc import ABC, abstractmethod
-from tkinter import ttk
-import pandas as pd
-from typing import List
-
 from view.mainwindow import Mainwindow
-from view.views import View
 from view.table import Table1
 from model.model import Model
-from controller.controllers import Controller
 from controller.tablecontroller import TableController
 from controller.mainwindowcontrollers import MainwindowController
 

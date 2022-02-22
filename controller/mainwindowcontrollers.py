@@ -1,6 +1,4 @@
 from controller.controllers import Controller
-from view.mainwindow import Mainwindow
-from model.model import Model
 
 class MainwindowController(Controller):
     def __init__(self, mainwindow) -> None:
