@@ -2,7 +2,7 @@ from view.views import View
 import tkinter as tk
 from tkinter import ttk
 from pandas import DataFrame
-from pandastable import Table, TableModel
+from pandastable import Table
 
 class Table1(View):
     def __init__(self, parent):

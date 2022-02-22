@@ -1,5 +1,4 @@
 import pandas as pd
-import datetime as dt
 
 class Model():
     def __init__(self, LINK: str, DROP_COLUMNS: str):
