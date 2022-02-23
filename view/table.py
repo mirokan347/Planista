@@ -9,11 +9,13 @@ class Table1(View):
     
         ttk.Frame.__init__(self, parent)
         self.search_entry_var = tk.StringVar()
-        self.notebookframe = ttk.Frame(self, width=1400, height=850, borderwidth=5, relief='flat')
+        self.notebookframe = ttk.Frame(self, borderwidth=5, relief='flat')
         self.notebookframe.grid(row=0,column=0)
-                
+        self.notebookframe.grid_rowconfigure(0, weight=1) # this needed to be added
+        self.notebookframe.grid_columnconfigure(0, weight=1) # as did this      
+        
         # tworzenia ramki górnej w ramce głównej
-        self.topframe = ttk.Frame(self.notebookframe, width=1400, height=100, borderwidth=5, relief='flat')
+        self.topframe = ttk.Frame(self.notebookframe, height=100, borderwidth=5, relief='flat')
         self.topframe.grid(row=0,column=0)
         label1 = ttk.Label(self.topframe, text ="Szukaj")
         label1.grid(row=0,column=0)
@@ -22,22 +24,23 @@ class Table1(View):
         self.search_entry_var = self.search_entry.get()
         
         # tworzenia ramki środkowej w ramce głównej        
-        self.middleframe = ttk.Frame(self.notebookframe, width=1400, height=650, borderwidth=5, relief='flat')
+        self.middleframe = ttk.Frame(self.notebookframe, height=650, borderwidth=5, relief='flat')
         self.middleframe.grid(row=1,column=0)        
         
         # tworzenia dolnej górnej w ramce głównej        
-        self.bottomframe = ttk.Frame(self.notebookframe, width=1400, height=100, borderwidth=5, relief='flat')
+        self.bottomframe = ttk.Frame(self.notebookframe, height=100, borderwidth=5, relief='flat')
         self.bottomframe.grid(row=2,column=0)   
 
         self.create_button() 
                
     def create_view(self, data: DataFrame):
 
-        table = Table(self.middleframe, dataframe=data, showtoolbar=False, showstatusbar=False, editable=False, enable_menus=False, width=1300, height=700)
+        table = Table(self.middleframe, dataframe=data, showtoolbar=False, showstatusbar=False, editable=False, enable_menus=False, width=1300, height=650)
         table.show() # wyświetlenie tabeli
         table.columncolors['ARTYKUŁ'] = '#dcf1fc' #color a specific column
         table.columncolors['NOWY TERMIN'] = '#ffe4e1'
         table.columncolors['TERMIN WYPRODUKOWANIA'] = '#ffffe0'
+        table.columncolors['DATA DO WYSYŁKI'] = '#98fb98'        
         table.maxcellwidth = 1200
         table.redraw()
         self.search_entry.focus_force()
