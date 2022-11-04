@@ -3,6 +3,6 @@ from abc import abstractmethod
 
 class View(tk.Frame):
     @abstractmethod
-    def create_view():
+    def create_view(self):
         raise NotImplementedError
         
